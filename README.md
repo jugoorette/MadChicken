@@ -1,0 +1,2 @@
+# MadChicken
+Graphische Datenverarbeitung Projekt
