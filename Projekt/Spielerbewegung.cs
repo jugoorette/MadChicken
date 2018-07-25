@@ -8,6 +8,9 @@ public class Spielerbewegung : MonoBehaviour {
     //Horizontal velocity
     public float horizontal = 0;
 
+    //StreckenAnzhal
+    public int streckenAnzahl = 2;
+
     // Use this for initialization
     void Start () {
 
@@ -19,18 +22,22 @@ public class Spielerbewegung : MonoBehaviour {
         GetComponent<Rigidbody>().velocity = new Vector3(horizontal, 0, 3);
 
          //bewegt sich nach links
-        if(Input.GetKeyDown(KeyCode.A)){
+        if(Input.GetKeyDown(KeyCode.A) && (streckenAnzahl>1)){
             horizontal = -2;
             //ruft stop() auf
             StartCoroutine(stop());
+            //damit der Spieler NUR in den 3 Strecken laufen kann
+            streckenAnzahl -= 1;
         }
 
-        //bewegt sich nach links
-        if (Input.GetKeyDown(KeyCode.D))
-        {
+        //bewegt sich nach rechts
+        if (Input.GetKeyDown(KeyCode.D) && (streckenAnzahl<=2)){
             horizontal = 2;
             //ruft stop() auf
             StartCoroutine(stop());
+            //damit der Spieler NUR in den 3 Strecken laufen kann
+            streckenAnzahl += 1;
+
 
         }
 
